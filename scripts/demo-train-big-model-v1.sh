@@ -95,9 +95,9 @@ wget http://word2vec.googlecode.com/svn/trunk/word2phrase.c
 wget http://word2vec.googlecode.com/svn/trunk/compute-accuracy.c
 wget http://word2vec.googlecode.com/svn/trunk/questions-words.txt
 wget http://word2vec.googlecode.com/svn/trunk/questions-phrases.txt
-gcc word2vec.c -o word2vec -lm -pthread -O3 -march=native -funroll-loops
-gcc word2phrase.c -o word2phrase -lm -pthread -O3 -march=native -funroll-loops
-gcc compute-accuracy.c -o compute-accuracy -lm -pthread -O3 -march=native -funroll-loops
+gcc word2vec.c -o word2vec -lm -pthread -O3  -funroll-loops
+gcc word2phrase.c -o word2phrase -lm -pthread -O3  -funroll-loops
+gcc compute-accuracy.c -o compute-accuracy -lm -pthread -O3  -funroll-loops
 ./word2phrase -train data.txt -output data-phrase.txt -threshold 200 -debug 2
 ./word2phrase -train data-phrase.txt -output data-phrase2.txt -threshold 100 -debug 2
 ./word2vec -train data-phrase2.txt -output vectors.bin -cbow 1 -size 500 -window 10 -negative 10 -hs 0 -sample 1e-5 -threads 40 -binary 1 -iter 3 -min-count 10
